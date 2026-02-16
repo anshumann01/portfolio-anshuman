@@ -33,7 +33,14 @@ const Navbar = () => {
         <li>About</li>
         <li>Projects</li>
         <li>Contact</li>
-        <button className="bg-white text-black text-md px-2 py-1 rounded-full cursor-pointer">Download Resume</button>
+        <button className="bg-white text-black text-md px-2 py-1 rounded-full cursor-pointer"><a
+  href="/resume.pdf"
+  download="Anshuman-Gupta-Resume.pdf"
+  className="bg-white text-black px-3 py-1 rounded-full hover:bg-gray-300 transition"
+>
+  Download Resume
+</a>
+</button>
       </ul>
 
       <button onClick={toggleMenu} className="md:hidden">

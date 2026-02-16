@@ -15,7 +15,13 @@ const MobileMenu = () => {
             {/* <p>Switch Theme</p>
             <MoonStar/> */}
         </div>
-        <button className='bg-white rounded-full p-2 w-full text-black'>Download Resume</button>
+        <button className='bg-white rounded-full p-2 w-full text-black'><a
+  href="/resume.pdf"
+  download="Anshuman-Gupta-Resume.pdf"
+  className="bg-white text-black px-3 py-1 rounded-full hover:bg-gray-300 transition"
+>
+  Download Resume
+</a></button>
     </div>
     </div>
   )
