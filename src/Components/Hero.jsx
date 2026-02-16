@@ -7,7 +7,7 @@ const Hero = () => {
     <section id="home" className="scroll-mt-20">
       <div className='bg-black pt-6 text-white px-4 pb-16 
       xl:flex xl:flex-row-reverse xl:justify-around 
-      xl:gap-24 xl:p-16 xl:h-[80vh] xl:items-center'>
+      xl:gap-24 xl:p-16 xl:h-screen xl:items-center'>
 
       <div className="flex justify-center xl:justify-end xl:w-1/2">
         <img
