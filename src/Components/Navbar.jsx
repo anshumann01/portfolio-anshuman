@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import MobileMenu from "./MobileMenu";
+import Resume from "./resume.pdf"
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -70,7 +71,7 @@ const Navbar = () => {
           {/* Resume Download */}
           <li>
             <a
-              href="/resume.pdf"
+              href={Resume}
               download="Anshuman-Gupta-Resume.pdf"
               className="bg-white text-black px-3 py-1 rounded-full 
               hover:bg-gray-300 transition"
