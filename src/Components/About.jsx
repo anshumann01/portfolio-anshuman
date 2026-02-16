@@ -5,6 +5,7 @@ import photo from "../assets/myphoto1.jpeg"
 const About = () => {
   return (
     <>
+    <section id="about" className="scroll-mt-20">
     <div className='bg-gray-900 pt-8 flex flex-col items-center'>
         <Tag text={"About me"}/>
     </div>   
@@ -29,6 +30,7 @@ At present, I am working on improving my full-stack development skills and build
             </p>
     </div>
     </div>
+    </section>
     </>
   )
 }

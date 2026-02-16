@@ -3,6 +3,7 @@ import { SquareArrowOutUpRight } from "lucide-react"
 
 const Work = (props) => {
   return (
+    <section id="projects" className="scroll-mt-20">
     <div className="
       rounded-lg overflow-hidden mb-8
       xl:flex xl:max-w-[900px] xl:mx-auto
@@ -39,6 +40,7 @@ const Work = (props) => {
         </a>
       </div>
     </div>
+    </section>
   )
 }
 

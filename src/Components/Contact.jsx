@@ -5,6 +5,7 @@ import { MapPin,Github,Linkedin } from 'lucide-react'
 
 const Contact = () => {
   return (
+    <section id="contact" className="scroll-mt-20">
     <div className='bg-black px-2 pb-8'>
         <div className='pt-8 flex flex-col items-center'>
         <Tag text={"Contact"}/>
@@ -14,12 +15,12 @@ const Contact = () => {
           <div className='text-white flex gap-4 mb-4'>
             <Mail />
             <p className='font-semibold'>anshuman.gupta2037@gmail.com</p>
-            <Copy />
+            {/* <Copy /> */}
           </div>
           <div className='text-white flex gap-4 mb-12'>
             <Phone />
             <p className='font-semibold'>+91 9149132230</p>
-            <Copy />
+            {/* <Copy /> */}
           </div>
           <p className='text-gray-400 text-sm font-extralight'>You may also find me on these platforms!</p>
           <div className='text-gray-400 flex gap-4 mt-2'>
@@ -28,6 +29,7 @@ const Contact = () => {
             </div>
     </div>
     </div>
+    </section>
   )
 }
 

@@ -4,58 +4,91 @@ import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
+
+  const navLinks = ["home", "about", "projects", "contact"];
 
   function toggleMenu() {
     setOpen(!open);
   }
 
+  // Disable body scroll when mobile menu open
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = open ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [open]);
 
+  // Detect active section while scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      navLinks.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActive(section);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const linkStyle = (section) =>
+    active === section
+      ? "text-white border-b-2 border-white pb-1"
+      : "text-gray-400 hover:text-white transition";
+
   return (
     <>
-      <>
-    <div className="fixed top-0 left-0 w-full h-14 bg-black text-white 
-    flex justify-between items-center px-6 z-50">
-    
-      <p className="text-2xl font-bold">&lt;/&gt;</p>
+      <div className="fixed top-0 left-0 w-full h-14 bg-black text-white 
+      flex justify-between items-center px-6 z-50">
 
-      <ul className="hidden md:flex gap-8 items-center">
-        <li>Home</li>
-        <li>About</li>
-        <li>Projects</li>
-        <li>Contact</li>
-        <button className="bg-white text-black text-md px-2 py-1 rounded-full cursor-pointer"><a
-  href="/resume.pdf"
-  download="Anshuman-Gupta-Resume.pdf"
-  className="bg-white text-black px-3 py-1 rounded-full hover:bg-gray-300 transition"
->
-  Download Resume
-</a>
-</button>
-      </ul>
+        {/* Logo */}
+        <p className="text-2xl font-bold cursor-pointer">
+          <a href="#home">&lt;/&gt;</a>
+        </p>
 
-      <button onClick={toggleMenu} className="md:hidden">
-        {open ? <X /> : <Menu />}
-      </button>
-    </div>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-8 items-center text-md">
 
-    {/*Push content down */}
-    <div className="pt-14">
-    {/* Your page content */}
-    </div>
+          {navLinks.map((section) => (
+            <li key={section}>
+              <a
+                href={`#${section}`}
+                className={linkStyle(section)}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </a>
+            </li>
+          ))}
 
-    {open && <MobileMenu />}
-    </>
+          {/* Resume Download */}
+          <li>
+            <a
+              href="/resume.pdf"
+              download="Anshuman-Gupta-Resume.pdf"
+              className="bg-white text-black px-3 py-1 rounded-full 
+              hover:bg-gray-300 transition"
+            >
+              Download Resume
+            </a>
+          </li>
 
+        </ul>
+
+        {/* Mobile Menu Toggle */}
+        <button onClick={toggleMenu} className="md:hidden">
+          {open ? <X /> : <Menu />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {open && <MobileMenu setOpen={setOpen} />}
     </>
   );
 };
